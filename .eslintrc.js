@@ -26,6 +26,7 @@ module.exports = {
         "max-len": 1,
         "linebreak-style": 0,
         indent: 0,
-        "no-unused-vars": 1
+        "no-unused-vars": 1,
+        "key-spacing": 1
     }
 };
