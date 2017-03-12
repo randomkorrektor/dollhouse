@@ -8,8 +8,7 @@ export default {
         core();
     },
     test: () => {
-        lib('localhost', '27017', 'dollhouseDBTest');
-        console.log('asd')
+        lib('192.168.0.102', '27017', 'dollhouseDBTest');
         tests();
     }
 };
