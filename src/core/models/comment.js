@@ -5,10 +5,14 @@ const postSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'User'
     },
+  post: {
+      type: Schema.Types.ObjectId,
+      ref: 'Post'
+    },
   subject: String,
   text: String,
   images: [String]
 });
 
 
-export default mongoose.model('Post', postSchema);
+export default mongoose.model('Comment', postSchema);

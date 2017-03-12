@@ -2,7 +2,7 @@ import assert from 'assert';
 import models from '../../../core/models';
 
 export default () => {
-    describe('post', () => {
+    describe('comment', () => {
         it('create', async () => {
             const user = await (models.user.create({
                 name: 'name',
@@ -16,9 +16,17 @@ export default () => {
                 text: 'text',
                 images: ['images']
             });
-            assert.deepEqual(post.toObject(), {
+            const comment = await models.comment.create({
                 user: user._id,
-                _id: post._id,
+                post: post._id,
+                subject: 'subject',
+                text: 'text',
+                images: ['images']
+            });
+            assert.deepEqual(comment.toObject(), {
+                user: user._id,
+                _id: comment._id,
+                post: post._id,
                 __v: 0,
                 subject: 'subject',
                 text: 'text',
@@ -32,18 +40,26 @@ export default () => {
                 password: 'password',
                 address: 'address'
             }));
-            await models.post.create({
+            const post = await models.post.create({
                 user,
                 subject: 'subject',
                 text: 'text',
                 images: ['images']
             });
-            const post = await models.post.find({
+            await models.comment.create({
+                user: user._id,
+                post: post._id,
+                subject: 'subject',
+                text: 'text',
+                images: ['images']
+            });
+            const comment = await models.comment.find({
                 user: user._id
             });
-            assert.deepEqual(post[0].toObject(), {
+            assert.deepEqual(comment[0].toObject(), {
                 user: user._id,
-                _id: post[0]._id,
+                _id: comment[0]._id,
+                post: post._id,
                 __v: 0,
                 subject: 'subject',
                 text: 'text',
@@ -57,18 +73,26 @@ export default () => {
                 password: 'password',
                 address: 'address'
             }));
-            await models.post.create({
+            const post = await models.post.create({
                 user,
                 subject: 'subject',
                 text: 'text',
                 images: ['images']
             });
-            const post = await models.post.findOne({
+            await models.comment.create({
+                user: user._id,
+                post: post._id,
+                subject: 'subject',
+                text: 'text',
+                images: ['images']
+            });
+            const comment = await models.comment.findOne({
                 user: user._id
             });
-            assert.deepEqual(post.toObject(), {
+            assert.deepEqual(comment.toObject(), {
                 user: user._id,
-                _id: post._id,
+                _id: comment._id,
+                post: post._id,
                 __v: 0,
                 subject: 'subject',
                 text: 'text',
@@ -82,16 +106,24 @@ export default () => {
                 password: 'password',
                 address: 'address'
             }));
-            const { _id } = await models.post.create({
+            const post = await models.post.create({
                 user,
                 subject: 'subject',
                 text: 'text',
                 images: ['images']
             });
-            const post = await models.post.findById(_id);
-            assert.deepEqual(post.toObject(), {
+            const { _id } = await models.comment.create({
                 user: user._id,
-                _id: post._id,
+                post: post._id,
+                subject: 'subject',
+                text: 'text',
+                images: ['images']
+            });
+            const comment = await models.comment.findById(_id);
+            assert.deepEqual(comment.toObject(), {
+                user: user._id,
+                _id: comment._id,
+                post: post._id,
                 __v: 0,
                 subject: 'subject',
                 text: 'text',
@@ -111,11 +143,19 @@ export default () => {
                 text: 'text',
                 images: ['images']
             });
-            post.subject = 'subject1';
-            await post.save();
-            assert.deepEqual(post.toObject(), {
+            const comment = await models.comment.create({
                 user: user._id,
-                _id: post._id,
+                post: post._id,
+                subject: 'subject',
+                text: 'text',
+                images: ['images']
+            });
+            comment.subject = 'subject1';
+            await comment.save();
+            assert.deepEqual(comment.toObject(), {
+                user: user._id,
+                _id: comment._id,
+                post: post._id,
                 __v: 0,
                 subject: 'subject1',
                 text: 'text',
@@ -129,21 +169,25 @@ export default () => {
                 password: 'password',
                 address: 'address'
             }));
-            await models.userSession.create({
-                user
-            });
-
-            await models.post.create({
-                user,
+            const post = await models.post.create({
+                user: user._id,
                 subject: 'subject',
                 text: 'text',
                 images: ['images']
             });
-            await models.post.remove({
+            await models.comment.create({
+                user: user._id,
+                post: post._id,
+                subject: 'subject',
+                text: 'text',
+                images: ['images']
+            });
+
+            await models.comment.remove({
                 user: user._id
             });
-            const posts = await models.post.find({});
-            assert.deepEqual(posts.length, 0);
+            const comments = await models.comment.find({});
+            assert.deepEqual(comments.length, 0);
         });
     });
 };

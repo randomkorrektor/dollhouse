@@ -7,6 +7,7 @@ export default () => {
            await models.user.remove({});
            await models.userSession.remove({});
            await models.post.remove({});
+           await models.comment.remove({});
         });
         core();
     });

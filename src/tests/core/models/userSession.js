@@ -11,7 +11,7 @@ export default () => {
                 address: 'address'
             }));
             const userSession = await models.userSession.create({
-                user
+                user: user._id
             });
             assert.deepEqual(userSession.toObject(), {
                 user: user._id,
