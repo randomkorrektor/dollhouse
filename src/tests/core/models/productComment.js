@@ -10,15 +10,15 @@ export default () => {
                 password: 'password',
                 address: 'address'
             }));
-            const post = await models.post.create({
+            const product = await (models.product.create({
+                name: 'name',
+                description: 'description',
+                pictures: ['picture1', 'picture2'],
+                price: 1000
+            }));
+            const comment = await models.productComment.create({
                 user: user._id,
-                subject: 'subject',
-                text: 'text',
-                images: ['images']
-            });
-            const comment = await models.comment.create({
-                user: user._id,
-                post: post._id,
+                product: product._id,
                 subject: 'subject',
                 text: 'text',
                 images: ['images']
@@ -26,7 +26,7 @@ export default () => {
             assert.deepEqual(comment.toObject(), {
                 user: user._id,
                 _id: comment._id,
-                post: post._id,
+                product: product._id,
                 __v: 0,
                 subject: 'subject',
                 text: 'text',
@@ -41,26 +41,26 @@ export default () => {
                 password: 'password',
                 address: 'address'
             }));
-            const post = await models.post.create({
-                user,
-                subject: 'subject',
-                text: 'text',
-                images: ['images']
-            });
-            await models.comment.create({
+            const product = await (models.product.create({
+                name: 'name',
+                description: 'description',
+                pictures: ['picture1', 'picture2'],
+                price: 1000
+            }));
+            await models.productComment.create({
                 user: user._id,
-                post: post._id,
+                product: product._id,
                 subject: 'subject',
                 text: 'text',
                 images: ['images']
             });
-            const comment = await models.comment.find({
+            const comment = await models.productComment.find({
                 user: user._id
             });
             assert.deepEqual(comment[0].toObject(), {
                 user: user._id,
                 _id: comment[0]._id,
-                post: post._id,
+                product: product._id,
                 __v: 0,
                 subject: 'subject',
                 text: 'text',
@@ -75,26 +75,26 @@ export default () => {
                 password: 'password',
                 address: 'address'
             }));
-            const post = await models.post.create({
-                user,
-                subject: 'subject',
-                text: 'text',
-                images: ['images']
-            });
-            await models.comment.create({
+            const product = await (models.product.create({
+                name: 'name',
+                description: 'description',
+                pictures: ['picture1', 'picture2'],
+                price: 1000
+            }));
+            await models.productComment.create({
                 user: user._id,
-                post: post._id,
+                product: product._id,
                 subject: 'subject',
                 text: 'text',
                 images: ['images']
             });
-            const comment = await models.comment.findOne({
+            const comment = await models.productComment.findOne({
                 user: user._id
             });
             assert.deepEqual(comment.toObject(), {
                 user: user._id,
                 _id: comment._id,
-                post: post._id,
+                product: product._id,
                 __v: 0,
                 subject: 'subject',
                 text: 'text',
@@ -109,24 +109,24 @@ export default () => {
                 password: 'password',
                 address: 'address'
             }));
-            const post = await models.post.create({
-                user,
-                subject: 'subject',
-                text: 'text',
-                images: ['images']
-            });
-            const { _id } = await models.comment.create({
+            const product = await (models.product.create({
+                name: 'name',
+                description: 'description',
+                pictures: ['picture1', 'picture2'],
+                price: 1000
+            }));
+            const { _id } = await models.productComment.create({
                 user: user._id,
-                post: post._id,
+                product: product._id,
                 subject: 'subject',
                 text: 'text',
                 images: ['images']
             });
-            const comment = await models.comment.findById(_id);
+            const comment = await models.productComment.findById(_id);
             assert.deepEqual(comment.toObject(), {
                 user: user._id,
                 _id: comment._id,
-                post: post._id,
+                product: product._id,
                 __v: 0,
                 subject: 'subject',
                 text: 'text',
@@ -141,15 +141,15 @@ export default () => {
                 password: 'password',
                 address: 'address'
             }));
-            const post = await models.post.create({
+            const product = await (models.product.create({
+                name: 'name',
+                description: 'description',
+                pictures: ['picture1', 'picture2'],
+                price: 1000
+            }));
+            const comment = await models.productComment.create({
                 user: user._id,
-                subject: 'subject',
-                text: 'text',
-                images: ['images']
-            });
-            const comment = await models.comment.create({
-                user: user._id,
-                post: post._id,
+                product: product._id,
                 subject: 'subject',
                 text: 'text',
                 images: ['images']
@@ -159,7 +159,7 @@ export default () => {
             assert.deepEqual(comment.toObject(), {
                 user: user._id,
                 _id: comment._id,
-                post: post._id,
+                product: product._id,
                 __v: 0,
                 subject: 'subject1',
                 text: 'text',
@@ -174,24 +174,24 @@ export default () => {
                 password: 'password',
                 address: 'address'
             }));
-            const post = await models.post.create({
+            const product = await (models.product.create({
+                name: 'name',
+                description: 'description',
+                pictures: ['picture1', 'picture2'],
+                price: 1000
+            }));
+            await models.productComment.create({
                 user: user._id,
-                subject: 'subject',
-                text: 'text',
-                images: ['images']
-            });
-            await models.comment.create({
-                user: user._id,
-                post: post._id,
+                product: product._id,
                 subject: 'subject',
                 text: 'text',
                 images: ['images']
             });
 
-            await models.comment.remove({
+            await models.productComment.remove({
                 user: user._id
             });
-            const comments = await models.comment.find({});
+            const comments = await models.productComment.find({});
             assert.deepEqual(comments.length, 0);
         });
     });

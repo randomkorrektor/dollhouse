@@ -9,6 +9,7 @@ export default () => {
            await models.product.remove({});
            await models.post.remove({});
            await models.comment.remove({});
+           await models.productComment.remove({});
         });
         core();
     });

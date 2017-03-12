@@ -3,6 +3,7 @@ import userSession from './userSession';
 import product from './product';
 import post from './post';
 import comment from './comment';
+import productComment from './productComment';
 
 export default () => {
     describe('models', () => {
@@ -11,5 +12,6 @@ export default () => {
         product();
         post();
         comment();
+        productComment();
     });
 };
