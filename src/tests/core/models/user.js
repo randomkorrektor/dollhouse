@@ -20,5 +20,96 @@ export default () => {
                 _id: user._id
             });
         });
+        it('read', async () => {
+            const user = await (models.user.create({
+                name: 'name',
+                email: 'email',
+                password: 'password',
+                address: 'address'
+            }));
+            const readUser = await (models.user.find({
+                name: 'name'
+            }));
+            assert.deepEqual(readUser[0].toObject(), {
+                name: 'name',
+                email: 'email',
+                password: 'password',
+                address: 'address',
+                admin: false,
+                __v: 0,
+                _id: user._id
+            });
+        });
+        it('readOne', async () => {
+            const user = await (models.user.create({
+                name: 'name',
+                email: 'email',
+                password: 'password',
+                address: 'address'
+            }));
+            const readUser = await (models.user.findOne({
+                email: 'email'
+            }));
+            assert.deepEqual(readUser.toObject(), {
+                name: 'name',
+                email: 'email',
+                password: 'password',
+                address: 'address',
+                admin: false,
+                __v: 0,
+                _id: user._id
+            });
+        });
+        it('findById', async () => {
+            const user = await (models.user.create({
+                name: 'name',
+                email: 'email',
+                password: 'password',
+                address: 'address'
+            }));
+            const readUser = await (models.user.findById(user._id));
+            assert.deepEqual(readUser.toObject(), {
+                name: 'name',
+                email: 'email',
+                password: 'password',
+                address: 'address',
+                admin: false,
+                __v: 0,
+                _id: user._id
+            });
+        });
+        it('update', async () => {
+            const user = await (models.user.create({
+                name: 'name',
+                email: 'email',
+                password: 'password',
+                address: 'address'
+            }));
+            const updateUser = await (models.user.findById(user._id));
+            updateUser.name = 'updateName';
+            await user.save();
+            assert.deepEqual(updateUser.toObject(), {
+                name: 'updateName',
+                email: 'email',
+                password: 'password',
+                address: 'address',
+                admin: false,
+                __v: 0,
+                _id: user._id
+            });
+        });
+        it('delete', async () => {
+            const user = await (models.user.create({
+                name: 'name',
+                email: 'email',
+                password: 'password',
+                address: 'address'
+            }));
+            await models.user.remove({
+                name: 'name'
+            });
+            const readUser = await (models.user.find({ }));
+            assert.deepEqual(readUser.length, 0);
+        });
     });
 };
