@@ -22,7 +22,8 @@ export default () => {
                 __v: 0,
                 subject: 'subject',
                 text: 'text',
-                images: ['images']
+                images: ['images'],
+                date: post.date
             });
         });
         it('find', async () => {
@@ -47,7 +48,8 @@ export default () => {
                 __v: 0,
                 subject: 'subject',
                 text: 'text',
-                images: ['images']
+                images: ['images'],
+                date: post[0].date
             });
         });
         it('findOne', async () => {
@@ -72,7 +74,8 @@ export default () => {
                 __v: 0,
                 subject: 'subject',
                 text: 'text',
-                images: ['images']
+                images: ['images'],
+                date: post.date
             });
         });
         it('findBId', async () => {
@@ -95,7 +98,8 @@ export default () => {
                 __v: 0,
                 subject: 'subject',
                 text: 'text',
-                images: ['images']
+                images: ['images'],
+                date: post.date
             });
         });
         it('update', async () => {
@@ -119,7 +123,8 @@ export default () => {
                 __v: 0,
                 subject: 'subject1',
                 text: 'text',
-                images: ['images']
+                images: ['images'],
+                date: post.date
             });
         });
         it('delete', async () => {

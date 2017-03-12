@@ -5,7 +5,7 @@ const postSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'User'
     },
-  post: {
+  product: {
       type: Schema.Types.ObjectId,
       ref: 'Post'
     },
@@ -19,4 +19,4 @@ const postSchema = new Schema({
 });
 
 
-export default mongoose.model('Comment', postSchema);
+export default mongoose.model('ProductComment', postSchema);
