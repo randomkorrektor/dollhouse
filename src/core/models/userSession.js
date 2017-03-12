@@ -3,7 +3,7 @@ import mongoose, { Schema } from 'mongoose';
 const userSessionSchema = new Schema({
   user: {
       type: Schema.Types.ObjectId,
-      ref: 'Story'
+      ref: 'User'
     }
 });
 
