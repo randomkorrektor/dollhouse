@@ -27,6 +27,8 @@ module.exports = {
         "linebreak-style": 0,
         indent: 0,
         "no-unused-vars": 1,
-        "key-spacing": 1
+        "key-spacing": 1,
+        "eol-last": 1,
+        "object-curly-spacing": 1
     }
 };
