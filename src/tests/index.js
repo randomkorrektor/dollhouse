@@ -6,6 +6,7 @@ export default () => {
         beforeEach(async () => {
            await models.user.remove({});
            await models.userSession.remove({});
+           await models.post.remove({});
         });
         core();
     });
