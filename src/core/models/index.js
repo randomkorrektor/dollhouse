@@ -9,7 +9,7 @@ export default {
     user,
     userSession,
     product,
+    productComment,
     post,
-    comment,
-    productComment
+    comment
 };
