@@ -29,6 +29,7 @@ module.exports = {
         "no-unused-vars": 1,
         "key-spacing": 1,
         "eol-last": 1,
-        "object-curly-spacing": 1
+        "object-curly-spacing": 1,
+        "comma-spacing": 1
     }
 };
