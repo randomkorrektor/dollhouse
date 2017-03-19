@@ -19,7 +19,6 @@ export default () => {
             const comment = await models.comment.create({
                 user: user._id,
                 post: post._id,
-                subject: 'subject',
                 text: 'text',
                 images: ['images']
             });
@@ -28,7 +27,6 @@ export default () => {
                 _id: comment._id,
                 post: post._id,
                 __v: 0,
-                subject: 'subject',
                 text: 'text',
                 images: ['images'],
                 date: comment.date
@@ -50,7 +48,6 @@ export default () => {
             await models.comment.create({
                 user: user._id,
                 post: post._id,
-                subject: 'subject',
                 text: 'text',
                 images: ['images']
             });
@@ -62,7 +59,6 @@ export default () => {
                 _id: comment[0]._id,
                 post: post._id,
                 __v: 0,
-                subject: 'subject',
                 text: 'text',
                 images: ['images'],
                 date: comment[0].date
@@ -84,7 +80,6 @@ export default () => {
             await models.comment.create({
                 user: user._id,
                 post: post._id,
-                subject: 'subject',
                 text: 'text',
                 images: ['images']
             });
@@ -96,7 +91,6 @@ export default () => {
                 _id: comment._id,
                 post: post._id,
                 __v: 0,
-                subject: 'subject',
                 text: 'text',
                 images: ['images'],
                 date: comment.date
@@ -118,7 +112,6 @@ export default () => {
             const { _id } = await models.comment.create({
                 user: user._id,
                 post: post._id,
-                subject: 'subject',
                 text: 'text',
                 images: ['images']
             });
@@ -128,7 +121,6 @@ export default () => {
                 _id: comment._id,
                 post: post._id,
                 __v: 0,
-                subject: 'subject',
                 text: 'text',
                 images: ['images'],
                 date: comment.date
@@ -150,19 +142,17 @@ export default () => {
             const comment = await models.comment.create({
                 user: user._id,
                 post: post._id,
-                subject: 'subject',
                 text: 'text',
                 images: ['images']
             });
-            comment.subject = 'subject1';
+            comment.text = 'text1';
             await comment.save();
             assert.deepEqual(comment.toObject(), {
                 user: user._id,
                 _id: comment._id,
                 post: post._id,
                 __v: 0,
-                subject: 'subject1',
-                text: 'text',
+                text: 'text1',
                 images: ['images'],
                 date: comment.date
             });
@@ -183,7 +173,6 @@ export default () => {
             await models.comment.create({
                 user: user._id,
                 post: post._id,
-                subject: 'subject',
                 text: 'text',
                 images: ['images']
             });
