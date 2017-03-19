@@ -3,12 +3,11 @@ import core from './core';
 import tests from './tests';
 
 export default {
-    core: () => {
-        lib('localhost', '27017', 'dollhouseDB');
+    core: async () => {
+        await lib('localhost', '27017', 'dollhouseDB', 3000);
         core();
     },
-    test: () => {
-        lib('192.168.0.102', '27017', 'dollhouseDBTest');
+    test: async () => {
         tests();
     }
 };

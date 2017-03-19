@@ -5,7 +5,13 @@ import managers from '../../../core/managers';
 export default () => {
     describe('userManager', () => {
         it('create', async () => {
-            const user = await (managers.userManager.create('name', 'email', 'password', 'picture', 'address'));
+            const user = await (managers.userManager.create({
+                name: 'name',
+                email: 'email',
+                password: 'password',
+                picture: 'picture',
+                address: 'address'
+            }));
             assert.deepEqual(user.toObject(), {
                 name: 'name',
                 email: 'email',
@@ -18,7 +24,13 @@ export default () => {
             });
         });
         it('readSelf', async () => {
-            const user = await (managers.userManager.create('name', 'email', 'password', 'picture', 'address'));
+            const user = await (managers.userManager.create({
+                name: 'name',
+                email: 'email',
+                password: 'password',
+                picture: 'picture',
+                address: 'address'
+            }));
             const userSession = await models.userSession.create({
                 user: user._id
             });
@@ -73,7 +85,13 @@ export default () => {
             assert.deepEqual(allUsers, null);
         });
         it('update', async () => {
-            const user = await (managers.userManager.create('name', 'email', 'password', 'picture', 'address'));
+            const user = await (managers.userManager.create({
+                name: 'name',
+                email: 'email',
+                password: 'password',
+                picture: 'picture',
+                address: 'address'
+            }));
             const userSession = await models.userSession.create({
                 user: user._id
             });

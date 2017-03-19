@@ -11,7 +11,10 @@ export default () => {
                 password: 'password',
                 address: 'address'
             }));
-            const userSession = await managers.userSessionManager.create('email', 'password');
+            const userSession = await managers.userSessionManager.create({
+                email: 'email',
+                password: 'password'
+            });
             assert.deepEqual(userSession.toObject(), {
                 user: user._id,
                 _id: userSession._id,
@@ -29,7 +32,7 @@ export default () => {
                 user
             });
 
-            await managers.userSessionManager.delete(session._id);
+            await managers.userSessionManager.delete({ sessionId: session._id });
             const sess = await models.userSession.find({});
             assert.deepEqual(sess.length, 0);
         });

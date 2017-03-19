@@ -1,13 +1,13 @@
 import models from '../models';
 
 export default {
-    create: (name, email, password, picture, address) => models.user.create({
-            name,
-            email,
-            password,
-            picture,
-            address
-        }),
+    create: ({ name, email, password, picture, address }) => models.user.create({
+        name,
+        email,
+        password,
+        picture,
+        address
+    }),
     readSelf: async (sessionId) => {
         const session = await models.userSession.findById(sessionId);
         const user = await models.user.findById(session.user);
