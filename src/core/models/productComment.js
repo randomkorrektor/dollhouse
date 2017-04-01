@@ -9,9 +9,8 @@ const postSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'Post'
     },
-  subject: String,
   text: String,
-  images: [String],
+  rate: Number,
   date: {
     type: Date,
     default: new Date()

@@ -36,6 +36,9 @@ export default {
         return product.save();
     },
     find: models.product.find.bind(models.product, {}),
+    findOne: ({ id }) => models.product.findOne.bind(models.product, {
+        _id: id
+    }),
     delete: async (sessionId, productId) => {
         const { user } = await models.userSession.findById(sessionId)
             .populate('user');

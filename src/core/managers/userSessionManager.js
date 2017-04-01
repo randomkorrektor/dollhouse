@@ -6,6 +6,9 @@ export default {
             email,
             password
         });
+        if (!user) {
+            throw 'Invalid email or password';
+        }
         return models.userSession.create({
             user: user._id
         });
